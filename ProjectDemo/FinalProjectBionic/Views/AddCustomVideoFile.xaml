@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="FinalProjectBionic.Views.AddCustomVideoFile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Height="401.504" Width="448.872"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:viewModels ="clr-namespace:FinalProjectBionic.ViewModels"
+             d:DataContext="{d:DesignInstance viewModels:LibraryViewModel}"
+             >
+    <StackPanel Margin="10">
+        <TextBox Name="TitleBox" Validation.Error="TitleBox_OnError"
+                 Text="{Binding Path = CustomFile.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True,NotifyOnValidationError=True}"
+                 Controls:TextboxHelper.Watermark="Title" 
+                 Height="16"  TextWrapping="Wrap"
+                 Margin="10,10,0,10" VerticalAlignment="Top" 
+                HorizontalAlignment="Left" Width="409"/>
+        
+                <TextBox Height="23" Margin="10,10,0,10" TextWrapping="Wrap" 
+                 Text="{Binding Path=CustomFile.YearOfRelease,
+                        ValidatesOnDataErrors=True,
+                        UpdateSourceTrigger=PropertyChanged}"
+                 Controls:TextboxHelper.Watermark="Year of release" HorizontalAlignment="Left" Width="409"/>
+        <TextBox Name="DirectedByBox" Text="{Binding Path = CustomFile.ProducedBy,UpdateSourceTrigger=PropertyChanged,
+                                             ValidatesOnDataErrors=True}" 
+                 Controls:TextboxHelper.Watermark="Directed by" HorizontalAlignment="Left" Height="25" 
+                 TextWrapping="Wrap" Margin="10,10,0,10" VerticalAlignment="Top" Width="409"/>
+        <TextBox x:Name="PlotBox" Text="{Binding Path=CustomFile.Comments, 
+                                        UpdateSourceTrigger=PropertyChanged,
+                                         ValidatesOnDataErrors=True}"
+                 Controls:TextboxHelper.Watermark="Comments" HorizontalAlignment="Left" Height="112"  TextWrapping="Wrap" Margin="10,10,0,10" VerticalAlignment="Top" Width="409"/>
+        <StackPanel Margin="10,20,0,20"  Orientation="Horizontal" HorizontalAlignment="Left" Width="399">
+            <Button x:Name="CreateButton" Command="{Binding AddCustomVideoFileCommand}" Content="Create" HorizontalAlignment="Left" Height="34"  VerticalAlignment="Top" Width="136">
+
+            </Button>
+
+        </StackPanel>
+
+
+    </StackPanel>
+</UserControl>
